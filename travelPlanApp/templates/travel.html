@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+</head>
+<body>
+    <h1>Hello {{user.name}}</h1>
+    
+      <h4>Your Trip Schedules</h4>
+      
+      
+     
+
+      
+      <table>
+        <tr>
+          <th>Destination</th>
+          <th>Travel Start Date</th>
+          <th>Travel End date</th>
+          <th>Travel Plan</th>
+        </tr>
+        {%for tr in myTrips%}
+        <tr>            
+          <td><a href="/travels/destination/{{tr.id}}">{{ tr.destination }}</a></td>
+          <td>{{tr.startdate}}</td>
+          <td>{{tr.enddate}}</td>
+          <td>{{tr.description}}</td>          
+        </tr>
+        {%endfor%}
+        
+      </table>
+
+      <h2>Other User's Travel Plans</h2>
+      
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Destination</th>
+          <th>Travel Start Date</th>
+          <th>Travel End date</th>
+          <th>Do you want to Join</th>
+        </tr>
+        {% for tr in differenttrips%} 
+        <tr>
+          <td>{{ tr.created_by.name}}</td>
+          <td><a href="/travels/destination/{{tr.id}}">{{ tr.destination }}</a></td>
+          <td>{{ tr.startdate }}</td>
+          <td>{{ tr.enddate }}</td>
+          <td><a href="/travels/join/{{tr.id}}"> Join</a></td>
+        </tr>
+        {% endfor %}
+        
+      </table>
+      <p><a href="/travels/add">Add Travel Plan</a></p>
+      <p><a href="/logout">Logout</a></p>
+
+      
+      
+      
+</body>
+</html>
