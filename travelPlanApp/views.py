@@ -43,7 +43,7 @@ def Login(request):
 	return redirect("/travels")
 
 def addTravels(request):
-	return render( request, 'addTrip.html')
+	return render( request, 'addtrip.html')
 	
 def createTrip(request):
 	print(request.POST)
